@@ -1,0 +1,21 @@
+<nav class="c-navbar" aria-labelledby="main-menu-label">
+  <h2 id="main-menu-label" class="u-screen-reader-only">Main menu</h2>
+  <div class="navbar__button-wrap u-mobile-only">
+    <button
+      id="close-menu"
+      class="button__icon u-mobile-only"
+      (click)="onCloseOnMobile()"
+      aria-label="Close menu"
+      [attr.aria-hidden]="isMobile ? false : true"
+    >
+      <img src="/assets/close.svg" alt="" aria-hidden="true">
+    </button>
+  </div>
+  <ul role="menubar">
+    <li role="menuitem"><a id="link-all" [routerLink]="['/all']">All</a></li>
+    <li role="menuitem"><a id="link-popular-beers" href="#popular-beers">Popular Beers</a></li>
+    <li role="menuitem"><a id="link-beer-expert" href="#beer-expert">Beer Expert</a></li>
+    <li role="menuitem"><a id="link-food-pairing" href="#food-pairing">Food Pairing</a></li>
+  </ul>
+</nav>
+

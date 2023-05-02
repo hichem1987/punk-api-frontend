@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+  color: $color-black;
+  font-weight: $font-weight-medium;
+  transition: color .2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: $color-blue;
+  }
+}
+
+.anchor-link {
+  position: absolute;
+  top: -14rem;
+}

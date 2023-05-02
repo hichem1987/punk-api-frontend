@@ -1,0 +1,11 @@
+<article class="c-beer-list">
+  <p id="beer-list-no-beers-available" *ngIf="beers === null && !isFetching">No beers available!</p>
+  <p id="beer-list-loading" *ngIf="isFetching && !error">Loading...</p>
+  <div class="beer-list__wrap" *ngIf="beers != null && !isFetching">
+    <app-beer-item *ngFor="let beerItem of beers" [beer]="beerItem"></app-beer-item>
+  </div>
+  <section id="beer-list-error" *ngIf="error" aria-labelledby="beer-list-error-title">
+    <h3 id="beer-list-error-title">An Error Occurred!</h3>
+    <p>{{ error }}</p>
+  </section>
+</article>

@@ -1,0 +1,74 @@
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="1000"
+  (scrolled)="onScroll()"
+>
+<article class="c-beer-details section">
+
+  
+    <article *ngFor="let beer of beers" class="beer-details__wrap-details">
+  
+      <article>
+        <div *ngIf="isLoadingImage" class="beer-details__beer-loading">
+          <img src="/assets/loading.gif" alt="Loading image.">
+        </div>
+        <img
+          [src]="beer.image_url ? beer.image_url : '/assets/beer.svg'"
+          alt="Bottle of beer {{ beer.name }}."
+          class="beer-details__beer-image"
+          [ngStyle]="{visibility:isLoadingImage?'hidden':''}"
+
+        >
+<!--         (load)="onHideImageLoader()"
+        (error)="onHideImageLoader()"  -->
+      </article>
+  
+      <article>
+        <section
+          id="beer-details-section"
+          *ngIf="beer.name || beer.description || beer.tagline"
+          aria-labelledby="beer-name"
+        >
+          <h2 id="beer-name" *ngIf="beer.name">{{ beer.name }}</h2>
+          <p id="beer-description" *ngIf="beer.description">{{ beer.description }}</p>
+          <blockquote *ngIf="beer.tagline">
+            <p id="beer-tagline">{{ beer.tagline }}</p>
+          </blockquote>
+        </section>
+  
+
+  
+      </article>
+  
+    </article>
+  
+    <section
+      *ngIf="error"
+      class="section"
+      id="beer-details-error"
+      aria-labelledby="beer-details-error-title"
+    >
+      <h2 id="beer-details-error-title">An Error Occurred!</h2>
+      <p>{{ error.message }}</p>
+    </section>
+  
+    <section
+      id="beer-details-no-beers-available"
+      *ngIf="beers === null && !isFetching"
+      class="section"
+      aria-labelledby="beer-details-no-beers-available-title"
+    >
+      <h2 id="beer-details-no-beers-available-title">No beers available!</h2>
+    </section>
+  
+    <section
+      *ngIf="isFetching && !error"
+      class="beer-details__loading section"
+      aria-label="loading"
+    >
+      <img src="/assets/loading.gif" alt="Loading">
+    </section>
+  
+  </article>
+</div>

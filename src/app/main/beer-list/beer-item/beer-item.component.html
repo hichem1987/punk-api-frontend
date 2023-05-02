@@ -1,0 +1,22 @@
+<a
+  class="c-beer-item"
+  [routerLink]="['/beer', beer.id]"
+  title="Go to beer {{ beer.name }} details."
+  aria-label="Go to beer details."
+>
+  <div class="beer-item__wrap">
+    <div *ngIf="isLoadingImage" class="beer-item__beer-loading">
+      <img src="/assets/loading.gif" alt="Loading image.">
+    </div>
+    <img
+      [src]="beer.image_url ? beer.image_url : '/assets/beer.svg'"
+      alt="Bottle of beer {{ beer.name }}."
+      class="beer-item__beer-image"
+      [ngStyle]="{visibility:isLoadingImage?'hidden':''}"
+      (load)="onHideImageLoader()"
+      (error)="onHideImageLoader()"
+    >
+    <h3 class="beer-item__title">{{ beer.name }}</h3>
+    <p class="beer-item__description">{{ beer.tagline }}</p>
+  </div>
+</a>

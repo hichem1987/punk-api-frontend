@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 13rem auto 0;
+
+  @include screen-tablet-portrait-and-bigger {
+    margin: 15rem auto 0;
+  }
+}
+
+.section {
+  position: relative;
+  height: auto;
+  width: auto;
+  margin: 0 $global-spacing-xs $global-spacing-xlg;
+
+  @include screen-tablet-portrait {
+    margin: 0 $global-spacing-sm $global-spacing-xlg;
+  }
+
+  @include screen-tablet-landscape-and-bigger {
+    margin: 0 0 10rem 0;
+  }
+}

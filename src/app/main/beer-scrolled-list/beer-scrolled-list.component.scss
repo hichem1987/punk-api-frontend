@@ -1,0 +1,100 @@
+@import '../../../styles/2-design-tokens/typography';
+@import '../../../styles/2-design-tokens/spacing';
+@import '../../../styles/2-design-tokens/colors';
+@import '../../../styles/2-design-tokens/media-queries';
+
+.c-beer-details {
+
+  .beer-details__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: $global-spacing-md;
+
+    @include screen-tablet-portrait-and-bigger {
+      margin-bottom: $global-spacing-xs;
+    }
+
+    img {
+      max-width: 8rem;
+      max-height: 8rem;
+    }
+  }
+
+  .beer-details__wrap-details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6rem;
+    #beer-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @include screen-tablet-portrait-and-bigger {
+      flex-direction: row;
+    }
+
+    article:first-child {
+      height: auto;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-light-blue;
+      border-radius: 2.5rem;
+      margin-bottom: $global-spacing-md;
+      padding: $global-spacing-md;
+
+      @include screen-tablet-portrait-and-bigger {
+        width: 25%;
+        max-height: 25rem;
+        margin: 0 $global-spacing-md 0 0;
+      }
+
+      .beer-details__beer-loading {
+        width: auto;
+        height: 20rem;
+        display: flex;
+        align-items: center;
+
+        img {
+          max-width: 10rem;
+          max-height: 10rem;
+        }
+      }
+
+      .beer-details__beer-image {
+        width: auto;
+        max-height: 20rem;
+      }
+    }
+
+    article:last-child {
+      @include screen-tablet-portrait-and-bigger {
+        width: 75%;
+      }
+    }
+  }
+
+  .beer-details__loading {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 50rem;
+
+    img {
+      margin-top: 10rem;
+      max-height: 12rem;
+      max-width: 12rem;
+    }
+  }
+
+  h2 {
+    text-align: left;
+  }
+
+
+}

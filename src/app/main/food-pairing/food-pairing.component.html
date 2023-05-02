@@ -1,0 +1,16 @@
+<section class="c-food-pairing section" aria-labelledby="title-food-pairing">
+  <span class="anchor-link" id="food-pairing"></span>
+  <h2 id="title-food-pairing">Food Pairing</h2>
+  <div class="food-pairing__buttons-wrap">
+    <button
+      *ngFor="let foodPairingItem of foodPairing;let index = index"
+      (click)="onFilterByFoodPairing(foodPairingItem, index)"
+      [ngClass]="{ 'button__selection--active' : index === activeIndex }"
+      class="button__selection"
+      id="{{foodPairingItem}}-food-pairing-button"
+    >
+      {{ foodPairingItem }}
+    </button>
+  </div>
+  <app-beer-list [beers]="beers"></app-beer-list>
+</section>

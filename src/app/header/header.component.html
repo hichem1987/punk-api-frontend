@@ -1,0 +1,15 @@
+<header class="c-header">
+  <a [routerLink]="['/']" aria-label="Go to homepage">
+    <h1 id="header-logo" aria-label="INUK PUNK API TEST"><span aria-hidden="true"><b>INUK</b> PUNK API TEST</span></h1>
+  </a>
+  <button
+    id="open-menu"
+    class="u-mobile-only button__icon"
+    (click)="showMenu()"
+    aria-label="Open menu"
+    [attr.aria-hidden]="isMobile ? false : true"
+  >
+    <img src="/assets/menu.svg" alt="" aria-hidden="true">
+  </button>
+  <app-navbar id="navbar" class="u-desktop-only"></app-navbar>
+</header>
