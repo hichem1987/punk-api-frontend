@@ -38,7 +38,6 @@ export class BeersService {
     let options = new HttpParams();
     options = options.append(param, term);
     options = options.append('per_page', perPage);
-    console.log('term',term,'param',param);
     return this.http.get<Beer[]>(this.beersUrl,
       {
         params: options,
