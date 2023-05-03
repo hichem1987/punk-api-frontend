@@ -126,6 +126,9 @@
               "devServerTarget": "punk-api-frontend:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }},
