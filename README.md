@@ -1,4 +1,4 @@
-# 🍺 Beer Lovers
+# 🍺 PUNK API FRONTEND TEST
 
 
 ## About
