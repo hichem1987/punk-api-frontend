@@ -25,21 +25,21 @@
   
       <article>
         <section
-          id="beer-scroll-list-section"
+          id="beer-scroll-list-section-{{i}}"
           *ngIf="beer.name || beer.description || beer.tagline"
           aria-labelledby="beer-name"
         >
-          <h2 id="beer-name" *ngIf="beer.name">{{ beer.name }}</h2>
-          <p id="beer-description" *ngIf="beer.description">{{ beer.description }}</p>
+          <h2 id="beer-name-{{i}}" *ngIf="beer.name">{{ beer.name }}</h2>
+          <p class="beer-description" *ngIf="beer.description">{{ beer.description }}</p>
           <blockquote *ngIf="beer.tagline">
-            <p id="beer-tagline">{{ beer.tagline }}</p>
+            <p id="beer-tagline-{{i}}">{{ beer.tagline }}</p>
           </blockquote>
           <div>    <a
             [routerLink]="['/beer', beer.id]"
             aria-label="Go to the beer scroll-list of the beer"
             class="button__primary"
             id="button-beer-{{i}}"
-          >Check scroll-list</a></div>
+          >Check Beer Details</a></div>
         </section>
   
 

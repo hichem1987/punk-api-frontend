@@ -18,12 +18,32 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 6rem;
-    #beer-description {
+    .beer-description {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    @include screen-mobile {
+      .button__primary{
+        padding:1em;
+        display:inline-block;
+
+        }
+        div:has(.button__primary) {
+          text-align: center;
+        }
+        
+    }
+    @include screen-mobile-plus {
+      .button__primary{
+        padding:1em;
+        display:inline-block;
+        }
+        div:has(.button__primary) {
+          text-align: center;
+        }
     }
 
     @include screen-tablet-portrait-and-bigger {
@@ -87,6 +107,12 @@
 
   h2 {
     text-align: left;
+    @include screen-mobile {
+      text-align:center;
+    }
+    @include screen-mobile-plus{
+      text-align:center;
+    } 
   }
 
 }
