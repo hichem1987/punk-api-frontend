@@ -12,7 +12,6 @@ for the positon of Senior Frontend Developer among [Inuk Team](https://inuk.co/)
 - [Sass](https://sass-lang.com/) as the preprocessor scripting language
 - [Jasmine](https://jasmine.github.io/) as the testing framework
 - [Karma](https://karma-runner.github.io/) as the testing runner
-- [Protractor](https://www.protractortest.org/) as the end-to-end test framework
 - [TSLint](https://palantir.github.io/tslint/) as the static code analysis tool
 - [GitHub Actions](https://github.com/features/actions) as the CI/CD tool
 
