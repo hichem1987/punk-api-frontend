@@ -54,7 +54,7 @@ describe('BeerExpertComponent', () => {
   });
 
   it('should have image', () => {
-    expect(element.querySelector('img[src="assets/homer.png"]').alt).toContain('Our beer expert, Homer Simpson, smiling and holding a beer mug.');
+    expect(element.querySelector('img[src="assets/waiter-with-beer-bottles-tray-pointing-lateral_thumbnail.png"]').alt).toContain('Our beer expert, Homer Simpson, smiling and holding a beer mug.');
   });
 
   it('should have heading', () => {

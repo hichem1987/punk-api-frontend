@@ -16,7 +16,7 @@
 
   @include screen-mobile-plus-and-bigger {
     flex-direction: row;
-    height: 26rem;
+    height: 32rem;
   }
 
   @include screen-tablet-landscape-and-bigger {
@@ -24,12 +24,10 @@
   }
 
   img {
-    width: 50%;
     max-height: 18rem;
     margin-bottom: $global-spacing-md;
 
     @include screen-mobile-plus-and-bigger {
-      width: 40%;
       max-height: 29rem;
       margin: 0 $global-spacing-sm 0 0;
     }

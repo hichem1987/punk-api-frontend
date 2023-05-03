@@ -1,7 +1,8 @@
-# 🍺 PUNK API FRONTEND TEST
-
+# PUNK API FRONTEND TEST
 
 ## About
+This code is implemented following the instruction of [this test](https://gist.github.com/Freezystem/a0f1ea278b43d5cd5decfc84080ec57c) destinated
+for the positon of Senior Frontend Developer among [Inuk Team](https://inuk.co/).
 
 
 ## Tech Stack 
@@ -18,7 +19,7 @@
 
 ## Requirements
 
-- [NodeJS 12+](https://nodejs.org/en/)
+- [NodeJS 14+](https://nodejs.org/en/)
 - [Angular CLI 9.1.7](https://github.com/angular/angular-cli)
 
 ## Running the application
@@ -45,17 +46,18 @@ Run `$ npm run lint` or `$ ng lint` to execute the lint via [TSLint](https://pal
 If you had any problem trying to run the application or the tests make sure that you have met the following requirements:
 
 ```
-Node version: v12.8.0
-Npm version: v6.14.5
+Node version: v14.20.0
+Npm version: v6.14.17
 ```
 
 ## Technical Decisions
-
+- typed code
+- deployed on this URL from [GitHub pages](https://hichem1987.github.io/punk-api-frontend/)
 - Mobile-first.
 - Fully responsive app for all screen sizes.
 - App accessible to all users, including keyboard users and screen reader users.
+- Scripts implementation of unit tests
+## REFERENCES
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[Image by luis_molinero](https://www.freepik.com/free-photo/waiter-with-beer-bottles-tray-pointing-lateral_1143777.htm#page=5&query=waiter&position=17&from_view=author) on Freepik
 

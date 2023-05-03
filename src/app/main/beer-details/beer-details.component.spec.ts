@@ -1,17 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Route } from '@angular/router';
 import { of } from 'rxjs';
 
 import { BeerDetailsComponent } from './beer-details.component';
 import { BeersService } from './../../shared/beers.service';
-
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import beerMock from './../../shared/beer-mock.json';
 
 describe('BeerDetailsComponent', () => {
   let component: BeerDetailsComponent;
   let fixture: ComponentFixture<BeerDetailsComponent>;
   let element;
+  let location: Location;
+  let router: Router;
   const mockData = beerMock;
   const mockId = '192';
   const mockRoute = {
@@ -22,6 +26,8 @@ describe('BeerDetailsComponent', () => {
     }
   };
   const mockBeersService = jasmine.createSpyObj('BeersService', ['searchBeers']);
+  const mockRouter = jasmine.createSpyObj('Router', ['getCurrentNavigation']);
+
   const searchBeersSpy = mockBeersService.searchBeers.and.returnValue(of(mockData));
 
   beforeEach(async(() => {
@@ -30,12 +36,16 @@ describe('BeerDetailsComponent', () => {
         declarations: [ BeerDetailsComponent ],
         providers: [
           { provide: BeersService, useValue: mockBeersService },
-          { provide: ActivatedRoute, useValue: mockRoute }
+          { provide: ActivatedRoute, useValue: mockRoute },
+          { provide: Router, useValue: mockRouter }
+
         ],
         schemas: [NO_ERRORS_SCHEMA]
       })
       .compileComponents()
       .then(() => {
+        router = TestBed.inject(Router);
+        location = TestBed.inject(Location);
         fixture = TestBed.createComponent(BeerDetailsComponent);
         component = fixture.componentInstance;
         element = fixture.nativeElement;

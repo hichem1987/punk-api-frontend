@@ -24,7 +24,7 @@ export class BeerScrolledListComponent implements OnInit {
    */
   loadBeers(page:number):void {
     this.isFetching = true;
-    this.beersService.searchBeers(String(this.page), 'page', '20').subscribe(
+    this.beersService.searchBeers('page',String(this.page), '20').subscribe(
       beers => {
         this.beers.push(...beers);
         this.isFetching = false;

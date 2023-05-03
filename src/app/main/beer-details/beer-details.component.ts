@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Beer } from '../../shared/beer.model';
-
 import { BeersService } from './../../shared/beers.service';
 
 @Component({
@@ -18,6 +17,7 @@ export class BeerDetailsComponent implements OnInit {
   isLoadingImage: boolean;
   beerColor: any = null;
   beerColorName: any = null;
+  // used in the description of each beer
   beerColorTable = [
     ['#FFFC46', 2, 'Pale Straw'],
     ['#FFE93D', 3, 'Straw'],
@@ -32,16 +32,25 @@ export class BeerDetailsComponent implements OnInit {
     ['#38302E', 30, 'Deep Brown'],
     ['#31302C', 40, 'Black']
   ];
+  private readonly canGoBack: boolean;
+  constructor(private readonly activatedRoute: ActivatedRoute,
+              private readonly beersService: BeersService,
+              private readonly router: Router,
+              private readonly location: Location) {
+                this.canGoBack = !!(this.router.getCurrentNavigation()?.previousNavigation);
 
-  constructor(private readonly route: ActivatedRoute, private readonly beersService: BeersService) {
-    this.isLoadingImage = true;
   }
 
   ngOnInit():void {
-    this.id = this.route.snapshot.params.id;
+    this.isLoadingImage = true;
+    this.id = this.activatedRoute.snapshot.params.id;
     this.searchBeers(this.id);
   }
-
+  
+  /**
+   * search the data of one selected beer
+   * @param id {string} id of the selected beer
+   */
   searchBeers(id: string):void {
     this.isFetching = true;
     this.beersService.searchBeers('ids', id, '1').subscribe(
@@ -56,7 +65,10 @@ export class BeerDetailsComponent implements OnInit {
       }
     );
   }
-
+  /**
+   * color adapted to SRM number
+   * @param srm {number}
+   */
   onDeterminesBeerColor(srm: number):void {
     this.beerColorTable.sort((a: any, b: any) => {
       return Math.abs(a[1] - srm) - Math.abs(b[1] - srm);
@@ -69,4 +81,19 @@ export class BeerDetailsComponent implements OnInit {
     this.isLoadingImage = false;
   }
 
+  /**
+   * go back safely to the previous page
+   */
+  goBack(): void {
+    if (this.canGoBack) {
+      // We can safely go back to the previous location as
+      // we know it's within our app.
+      this.location.back();
+    } else {
+      // There's no previous navigation.
+      // Here we decide where to go. For example, let's say the
+      // upper level is the index page, so we go up one level.
+      this.router.navigate(['..'], {relativeTo: this.activatedRoute});
+    }
+  }
 }

@@ -4,29 +4,28 @@
   [infiniteScrollThrottle]="1000"
   (scrolled)="onScroll()"
 >
-<article class="c-beer-details section">
+<article class="c-beer-scroll-list section">
+  <h1>Infinite List of Beers</h1>
+  <p class="first-child">Scroll down and you will discover more beers.</p>
+  <article *ngFor="let beer of beers; let i = index;" class="beer-scroll-list__wrap-scroll-list">
 
-  
-    <article *ngFor="let beer of beers" class="beer-details__wrap-details">
-  
       <article>
-        <div *ngIf="isLoadingImage" class="beer-details__beer-loading">
+        <div *ngIf="isLoadingImage" class="beer-scroll-list__beer-loading">
           <img src="assets/loading.gif" alt="Loading image.">
         </div>
         <img
           [src]="beer.image_url ? beer.image_url : '/assets/beer.svg'"
           alt="Bottle of beer {{ beer.name }}."
-          class="beer-details__beer-image"
+          class="beer-scroll-list__beer-image"
           [ngStyle]="{visibility:isLoadingImage?'hidden':''}"
-
+          (load)="onHideImageLoader()"
+          (error)="onHideImageLoader()"
         >
-<!--         (load)="onHideImageLoader()"
-        (error)="onHideImageLoader()"  -->
       </article>
   
       <article>
         <section
-          id="beer-details-section"
+          id="beer-scroll-list-section"
           *ngIf="beer.name || beer.description || beer.tagline"
           aria-labelledby="beer-name"
         >
@@ -35,6 +34,12 @@
           <blockquote *ngIf="beer.tagline">
             <p id="beer-tagline">{{ beer.tagline }}</p>
           </blockquote>
+          <div>    <a
+            [routerLink]="['/beer', beer.id]"
+            aria-label="Go to the beer scroll-list of the beer"
+            class="button__primary"
+            id="button-beer-{{i}}"
+          >Check scroll-list</a></div>
         </section>
   
 
@@ -46,25 +51,25 @@
     <section
       *ngIf="error"
       class="section"
-      id="beer-details-error"
-      aria-labelledby="beer-details-error-title"
+      id="beer-scroll-list-error"
+      aria-labelledby="beer-scroll-list-error-title"
     >
-      <h2 id="beer-details-error-title">An Error Occurred!</h2>
+      <h2 id="beer-scroll-list-error-title">An Error Occurred!</h2>
       <p>{{ error.message }}</p>
     </section>
   
     <section
-      id="beer-details-no-beers-available"
+      id="beer-scroll-list-no-beers-available"
       *ngIf="beers === null && !isFetching"
       class="section"
-      aria-labelledby="beer-details-no-beers-available-title"
+      aria-labelledby="beer-scroll-list-no-beers-available-title"
     >
-      <h2 id="beer-details-no-beers-available-title">No beers available!</h2>
+      <h2 id="beer-scroll-list-no-beers-available-title">No beers available!</h2>
     </section>
   
     <section
       *ngIf="isFetching && !error"
-      class="beer-details__loading section"
+      class="beer-scroll-list__loading section"
       aria-label="loading"
     >
       <img src="assets/loading.gif" alt="Loading">
